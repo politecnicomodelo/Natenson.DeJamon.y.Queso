@@ -9,5 +9,3 @@ class Platos(object):
 
     def setPrecio(self, Precio):
         self.Precio=Precio
-
-    
