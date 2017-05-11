@@ -36,7 +36,7 @@ while 1:
 
         f=open("ArchivoAlumnos.txt", "w")
 
-        f.write(idPedido)
+        f.write(str(idPedido)+'\n')
 
         for item in ListaPersonas:
             if type(item) is Alumno:
@@ -49,12 +49,12 @@ while 1:
                 f.write(item.Nombre+"/"+item.Apellido+"/"+item.Division+'\n')
         p.close()
 
-        a=open("ArchivoPlatos", "w")
+        a=open("ArchivoPlatos.txt", "w")
         for item in ListaPlatos:
             a.write(item.Nombre+"/"+item.Precio+'\n')
         a.close()
 
-        j=open("ArchivoPedidos", "w")
+        j=open("ArchivoPedidos.txt", "w")
         for item in ListaPedidos:
             j.write(item.idPedido+"/"+
                     item.FechaCreacion.year+"/"+
@@ -71,7 +71,7 @@ while 1:
         input()
 
 
-    if x == '1':
+    #if x == '1':
 
 
     if x == '2':
