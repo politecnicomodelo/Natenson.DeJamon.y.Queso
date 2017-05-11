@@ -12,26 +12,75 @@ idPedido=0
 
 while 1:
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("1-Crear alumnos")
-    print("2-Crear profesores")
-    print("3-Crear platos")
-    print("4-Crear pedidos")
-    print("5-Modificar alumnos")
-    print("6-Modificar profesores")
-    print("7-Modificar platos")
-    print("8-Modificar pedidos")
-    print("9-Eliminar alumnos")
-    print("10-Eliminar profesores")
-    print("11-Eliminar platos")
-    print("12-Eliminar pedidos")
-    print("13-Listado pedidos del dia")
-    print("14-Salir")
+    print("0-Guardar archivo")
+    print("1-Cargar Archivo")
+    print("2-Crear alumnos")
+    print("3-Crear profesores")
+    print("4-Crear platos")
+    print("5-Crear pedidos")
+    print("6-Modificar alumnos")
+    print("7-Modificar profesores")
+    print("8-Modificar platos")
+    print("9-Modificar pedidos")
+    print("10-Eliminar alumnos")
+    print("11-Eliminar profesores")
+    print("12-Eliminar platos")
+    print("13-Eliminar pedidos")
+    print("14-Listado pedidos del dia")
+    print("15-Salir")
 
     x=input()
 
+    if x == '0':
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        f=open("ArchivoAlumnos.txt", "w")
+
+        f.write(idPedido)
+
+        for item in ListaPersonas:
+            if type(item) is Alumno:
+                f.write(item.Nombre+"/"+item.Apellido+"/"+item.Division+'\n')
+        f.close()
+
+        p=open("ArchivoProfesores.txt", "w")
+        for item in ListaPersonas:
+            if type(item) is Profesores:
+                f.write(item.Nombre+"/"+item.Apellido+"/"+item.Division+'\n')
+        p.close()
+
+        a=open("ArchivoPlatos", "w")
+        for item in ListaPlatos:
+            a.write(item.Nombre+"/"+item.Precio+'\n')
+        a.close()
+
+        j=open("ArchivoPedidos", "w")
+        for item in ListaPedidos:
+            j.write(item.idPedido+"/"+
+                    item.FechaCreacion.year+"/"+
+                    item.FechaCreacion.month+"/"+
+                    item.FechaCreacion.day+"/"+
+                    item.Persona.DNI+"/"+
+                    item.FechaEntrega.year+"/"+
+                    item.FechaEntrega.month+"/"+
+                    item.FechaEntrega.day+"/"+
+                    item.Plato.Nombre+"/"+
+                    item.SeEntrego+'\n')
+
+        print("Archivo guardado con exito")
+        input()
+
+
     if x == '1':
+
+
+    if x == '2':
         os.system('cls' if os.name == 'nt' else 'clear')
         unAlumno=Alumno()
+
+        print("Ingresar DNI")
+        DNI = input()
+        unAlumno.setDNI(DNI)
 
         print("Ingresar nombre")
         Nombre = input()
@@ -53,9 +102,13 @@ while 1:
         input()
 
 
-    if x == '2':
+    if x == '3':
         os.system('cls' if os.name == 'nt' else 'clear')
         unProfesor=Profesores()
+
+        print("Ingresar DNI")
+        DNI = input()
+        unProfesor.setDNI(DNI)
 
         print("Ingresar nombre")
         Nombre=input()
@@ -77,7 +130,7 @@ while 1:
         input()
 
 
-    if x == '3':
+    if x == '4':
         os.system('cls' if os.name == 'nt' else 'clear')
         unPlato=Platos()
 
@@ -97,7 +150,7 @@ while 1:
         input()
 
 
-    if x == '4':
+    if x == '5':
         os.system('cls' if os.name == 'nt' else 'clear')
         unPedido=Pedido()
 
@@ -108,10 +161,10 @@ while 1:
         print("Enter para continuar")
         input()
 
-        print("Ingresar Apellido de la persona del pedido")
-        Nombre=input()
+        print("Ingresar DNI de la persona del pedido")
+        DNI=input()
         for item in ListaPersonas:
-            if item.Apellido==Nombre:
+            if item.DNI==DNI:
                 unPedido.agregarPersona(item)
 
         print("Ingresar la fecha de creacion")
@@ -151,15 +204,19 @@ while 1:
         input()
 
 
-    if x == '5':
+    if x == '6':
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("Apellido del alumno a modificar")
-        NombreAl=input()
+        print("DNI del alumno a modificar")
+        DNI=input()
 
         Auxiliar=None
         for item in ListaPersonas:
-            if item.Apellido == NombreAl:
+            if item.DNI == DNI:
                 Auxiliar=item
+
+        print("Ingresar DNI")
+        DNI = input()
+        Auxiliar.setDNI(DNI)
 
         print("Ingresar nombre")
         Nombre = input()
@@ -179,15 +236,19 @@ while 1:
         input()
 
 
-    if x == '6':
+    if x == '7':
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("Apellido del Profesor a modificar")
-        NombreAl = input()
+        print("DNI del Profesor a modificar")
+        DNI = input()
 
         Auxiliar = None
         for item in ListaPersonas:
-            if item.Apellido == NombreAl:
+            if item.DNI == DNI:
                 Auxiliar = item
+
+        print("Ingresar DNI")
+        DNI = input()
+        Auxiliar.setDNI(DNI)
 
         print("Ingresar nombre")
         Nombre = input()
@@ -207,7 +268,7 @@ while 1:
         input()
 
 
-    if x == '7':
+    if x == '8':
         os.system('cls' if os.name == 'nt' else 'clear')
         print("Nombre del plato a modificar")
         Auxiliar=None
@@ -230,7 +291,7 @@ while 1:
         input()
 
 
-    if x == '8':
+    if x == '9':
         os.system('cls' if os.name == 'nt' else 'clear')
         print("Ingrear el id del pedido a modificar")
         Auxiliar=None
@@ -244,10 +305,10 @@ while 1:
         print("Enter para continuar")
         input()
 
-        print("Ingresar nombre de la persona del pedido")
-        Nombre=input()
+        print("Ingresar DNI de la persona del DNI")
+        DNI=input()
         for item in ListaPersonas:
-            if item.Nombre==Nombre:
+            if item.DNI==DNI:
                 Auxiliar.agregarPersona(item)
 
         print("Ingresar la fecha de creacion")
@@ -287,13 +348,13 @@ while 1:
         input()
 
 
-    if x == '9':
+    if x == '10':
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("Ingresar apellido del alumno a eliminar")
-        Apellido=input()
+        print("Ingresar DNI del alumno a eliminar")
+        DNI=input()
         Auxiliar=None
         for item in ListaPersonas:
-            if Apellido==item.Apellido:
+            if DNI==item.DNI:
                 Auxiliar=item
         ListaPersonas.remove(Auxiliar)
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -301,13 +362,13 @@ while 1:
         input()
 
 
-    if x == '10':
+    if x == '11':
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("Ingresar apellido del profesor a eliminar")
-        Apellido=input()
+        print("Ingresar DNI del profesor a eliminar")
+        DNI=input()
         Auxiliar=None
         for item in ListaPersonas:
-            if Apellido==item.Apellido:
+            if DNI==item.DNI:
                 Auxiliar=item
         ListaPersonas.remove(Auxiliar)
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -315,7 +376,7 @@ while 1:
         input()
 
 
-    if x == '11':
+    if x == '12':
         os.system('cls' if os.name == 'nt' else 'clear')
         print("Ingresar nombre del plato a eliminar")
         Nombre=input()
@@ -329,7 +390,7 @@ while 1:
         input()
 
 
-    if x == '12':
+    if x == '13':
         os.system('cls' if os.name == 'nt' else 'clear')
         print("Ingresar id del pedido a eliminar")
         id=input()
@@ -343,7 +404,7 @@ while 1:
         input()
 
 
-    if x == '13':
+    if x == '14':
         os.system('cls' if os.name == 'nt' else 'clear')
 
         print("Ingresar fecha")
@@ -375,6 +436,6 @@ while 1:
                 input()
 
 
-    if x == '14':
+    if x == '15':
         break
 

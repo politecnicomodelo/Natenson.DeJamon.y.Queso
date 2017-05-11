@@ -1,8 +1,13 @@
 class Persona(object):
 
+    DNI=None
+
     Nombre=" "
 
     Apellido=" "
+
+    def setDNI(self, DNI):
+        self.DNI=DNI
 
     def setNombre(self, Nombre):
         self.Nombre=Nombre
